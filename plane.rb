@@ -1,12 +1,14 @@
 class Plane
-  attr_accessor :nodes, :nodes_distances
-  def initialize()
-    @nodes = []
-    @nodes_distances = []
+  attr_accessor :nodes
+  attr_reader   :dimension
+
+  def initialize(args = {})
+    @nodes     = args.fetch(:nodes, [])
+    @dimension = args.fetch(:dimension, 2)
   end  
 
   def add_node(node)
-    nodes.push node
+    nodes.push(node) if validate_node_dimension(node)
   end
 
   def distances
@@ -36,5 +38,14 @@ class Plane
     def count
       count ||= nodes.count - 1
       count
+    end
+
+    def validate_node_dimension(node)
+      if node.dimension != dimension
+        raise Exception, "The node must have the same dimension."
+        false
+      else
+        true
+      end
     end
 end

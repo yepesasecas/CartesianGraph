@@ -9,4 +9,8 @@ class Node
     dist = Distance.new from: self, to: node
     dist.distance
   end
+
+  def dimension
+    coordinates.count
+  end
 end
