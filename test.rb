@@ -3,7 +3,6 @@ load "distance.rb"
 load "node.rb"
 load "plane_factory.rb"
 
-plane = PlaneFactory.create
+plane = PlaneFactory.create(3)
 
-# p plane.distances
-p plane.near(plane.nodes.first, 4).count
+p plane.distances

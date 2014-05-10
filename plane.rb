@@ -1,6 +1,6 @@
 class Plane
   attr_accessor :nodes
-  attr_reader   :dimension
+  attr_accessor :dimension
 
   def initialize(args = {})
     @nodes     = args.fetch(:nodes, [])
@@ -17,7 +17,7 @@ class Plane
         nodeA = nodes[i]
         nodeB = nodes[j]
         dist  = nodeA.distance_to(nodeB)
-        puts "#{i} - #{j}: #{dist.distance}"
+        puts "#{i} - #{j}: #{dist}" 
       end
     end
   end
@@ -42,7 +42,7 @@ class Plane
 
     def validate_node_dimension(node)
       if node.dimension != dimension
-        raise Exception, "The node must have the same dimension."
+        raise Exception, "Node dimension different from Plane dimension."
         false
       else
         true

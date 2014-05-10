@@ -1,19 +1,28 @@
 module PlaneFactory
-  def self.create
-    plane = create_nodes(Plane.new)
+  def self.create(nDimension)
+    plane = create_nodes(Plane.new(dimension: nDimension))
     plane
   end
 
   def self.create_nodes(plane)
-    1000.times do
-      coordinates = [sample, sample,sample]
+    100.times do
+      coordinates = create_coordinate(plane)
       node        = Node.new(coordinates)
       plane.add_node(node)
     end
     plane
   end
 
-  def self.sample
-    (0..10).to_a.sample
-  end
+  private
+    def self.sample
+      (0..10).to_a.sample
+    end
+
+    def self.create_coordinate(plane)
+      coord = []
+      plane.dimension.times do 
+        coord.push(sample)
+      end
+      coord
+    end
 end
