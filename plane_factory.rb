@@ -1,11 +1,13 @@
 module PlaneFactory
-  def self.create(nDimension)
-    plane = create_nodes(Plane.new(dimension: nDimension))
+  def self.create(args)
+    nDimension  = args.fetch(:dimension)
+    nNumerNodes = args.fetch(:number_of_nodes)
+    plane = create_nodes(Plane.new(dimension: nDimension), nNumerNodes)
     plane
   end
 
-  def self.create_nodes(plane)
-    100.times do
+  def self.create_nodes(plane, number_of_nodes)
+    number_of_nodes.times do
       coordinates = create_coordinate(plane)
       node        = Node.new(coordinates)
       plane.add_node(node)
