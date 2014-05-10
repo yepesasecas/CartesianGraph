@@ -12,7 +12,9 @@ class Plane
   def distances
     for i in 0..count do
       for j in i..count do
-        dist = distance(nodes[i], nodes[j])
+        nodeA = nodes[i]
+        nodeB = nodes[j]
+        dist  = nodeA.distance_to(nodeB)
         puts "#{i} - #{j}: #{dist.distance}"
       end
     end
@@ -22,17 +24,12 @@ class Plane
     nears = []
     for i in 0..count do
       iNode = nodes[i]
-      dist = distance(node, iNode).distance
+      dist  = node.distance_to iNode
       if node != iNode && dist < radius
         nears.push({node: iNode, distance: dist})
       end
     end
     nears
-  end
-
-  def distance(nodeA, nodeB)
-     dist = Distance.new from: nodeA, to: nodeB
-     dist
   end
 
   private

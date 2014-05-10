@@ -6,7 +6,7 @@ module PlaneFactory
 
   def self.create_nodes(plane)
     1000.times do
-      coordinates = [sample, sample,sample]
+      coordinates = [sample, sample, sample]
       node        = Node.new(coordinates)
       plane.add_node(node)
     end
