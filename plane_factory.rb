@@ -8,8 +8,8 @@ module PlaneFactory
 
   def self.create_nodes(plane, number_of_nodes)
     number_of_nodes.times do
-      coordinates = create_coordinate(plane)
-      node        = Node.new(coordinates)
+      coord = create_coordinate(plane)
+      node  = Node.new(coord)
       plane.add_node(node)
     end
     plane
